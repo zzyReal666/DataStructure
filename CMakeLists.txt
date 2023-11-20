@@ -7,4 +7,6 @@ add_executable(DataStructure main.c
         SqList/SqList.h
         SqList/SqList.c
         SqList/SqListExercises.c
-        SqList/SqListExercises.h)
+        SqList/SqListExercises.h
+        LinkedList/LinkedList.h
+        LinkedList/LinkedList.c)

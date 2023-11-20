@@ -7,19 +7,22 @@
 //初始化一个顺序表
 void InitList(SqList *L) {
   for (int i = 0; i < MaxSize; i++) {
-    L->data[i] = 0;
+    L->data[i] = 0;//L是个指针，要用->来访问结构体内部的成员
   }
   L->length = 0;
 }
 
-//插入操作
+//插入操作 i为插入的位置，e为插入的元素
 int ListInsert(SqList *L, int i, int e) {
+  //判断i的范围是否有效, i的范围为1~L->length+1 ,因为可以在最后一个位置插入,所以是+1
   if (i < 1 || i > L->length + 1) {
     return 0;
   }
+  //判断顺序表是否已满
   if (L->length >= MaxSize) {
     return 0;
   }
+  //将第i个元素及之后的元素后移
   for (int j = L->length; j >= i; j--) {
     L->data[j] = L->data[j - 1];
   }
@@ -28,8 +31,9 @@ int ListInsert(SqList *L, int i, int e) {
   return 1;
 }
 
-//删除操作
+//删除操作 i为删除的位置，e为删除的元素
 int ListDelete(SqList *L, int i, int *e) {
+  //判断i的范围是否有效, i的范围为1~L->length ,最后一个位置为L->length
   if (i < 1 || i > L->length) {
     return 0;
   }

@@ -89,9 +89,10 @@ bool question1(SqList *l, int *min) {
   if (l->length == 0) {
     return false;
   }
+
+  //找到最小值 并记录下标
   *min = l->data[0];
   int index = 0;
-
   for (int i = 1; i < l->length; ++i) {
     if (l->data[i] < *min) {
       *min = l->data[i];
@@ -108,7 +109,7 @@ bool question2(SqList *l) {
   if (l->length == 0) {
     return false;
   }
-
+  //交换前后元素
   int temp;
   for (int i = 0; i < l->length / 2; i++) {
     temp = l->data[i];
@@ -327,6 +328,7 @@ bool question11(SqList *l1, SqList *l2, int *result) {
     return false;
   }
 
+  //解法1 : 合并两个有序表,找到中位数
   int i = 0, j = 0, k = 0;
   while (i < l1->length && j < l2->length) {
     if (l1->data[i] < l2->data[j]) {
@@ -341,6 +343,6 @@ bool question11(SqList *l1, SqList *l2, int *result) {
   while (j < l2->length) {
     result[k++] = l2->data[j++];
   }
-  *result = result[(l1->length + l2->length) / 2];
+  *result = result[(l1->length + l2->length - 1) / 2];
   return true;
 }
